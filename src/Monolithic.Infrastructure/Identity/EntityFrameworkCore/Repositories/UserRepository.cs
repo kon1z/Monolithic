@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Monolithic.Identity.Entities;
-using Monolithic.Identity.Repositories;
-using System.Security.Claims;
+﻿using System.Security.Claims;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.Entities;
+using Microsoft.AspNetCore.Identity.Repositories;
 
-namespace Monolithic.Identity.EntityFrameworkCore.Repositories;
+namespace Identity.EntityFrameworkCore.Repositories;
 
 public class UserRepository(IdentityErrorDescriber describer) : UserRepositoryBase(describer)
 {

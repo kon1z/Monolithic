@@ -1,4 +1,4 @@
-﻿namespace Monolithic.Application.AppServices;
+﻿namespace Application.AppServices;
 
 public class UserAppService
 {

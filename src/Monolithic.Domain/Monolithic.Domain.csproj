@@ -4,15 +4,16 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <RootNamespace>Monolithic</RootNamespace>
+    <RootNamespace></RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Domain\Repositories\" />
-    <Folder Include="Domain\DomainServices\" />
+    <Folder Include="Monolithic\Domain\Repositories\" />
+    <Folder Include="Monolithic\Domain\DomainServices\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="JetBrains.Annotations" Version="2023.3.0" />
     <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="8.0.0" />
   </ItemGroup>
 

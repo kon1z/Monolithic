@@ -1,4 +1,4 @@
-﻿namespace Monolithic.EntityFrameworkCore;
+﻿namespace EntityFrameworkCore;
 
 public class AppDbContext
 {

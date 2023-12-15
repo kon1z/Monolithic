@@ -1,4 +1,4 @@
-﻿namespace Monolithic.Infrastructure;
+﻿namespace Infrastructure;
 
 public abstract class AppTestBase
 {
