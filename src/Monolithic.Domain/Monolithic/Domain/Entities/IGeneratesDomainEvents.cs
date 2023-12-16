@@ -1,14 +1,12 @@
 ﻿namespace Monolithic.Domain.Entities;
 
-//TODO: Re-consider this interface
-
 public interface IGeneratesDomainEvents
 {
-    IEnumerable<DomainEventRecord> GetLocalEvents();
+	IEnumerable<DomainEventRecord> GetLocalEvents();
 
-    IEnumerable<DomainEventRecord> GetDistributedEvents();
+	IEnumerable<DomainEventRecord> GetDistributedEvents();
 
-    void ClearLocalEvents();
+	void ClearLocalEvents();
 
-    void ClearDistributedEvents();
+	void ClearDistributedEvents();
 }

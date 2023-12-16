@@ -11,10 +11,7 @@ public static class Check
 		T? value,
 		[InvokerParameterName] string parameterName)
 	{
-		if (value == null)
-		{
-			throw new ArgumentNullException(parameterName);
-		}
+		if (value == null) throw new ArgumentNullException(parameterName);
 
 		return value;
 	}
@@ -25,10 +22,7 @@ public static class Check
 		[InvokerParameterName] string parameterName,
 		string message)
 	{
-		if (value == null)
-		{
-			throw new ArgumentNullException(parameterName, message);
-		}
+		if (value == null) throw new ArgumentNullException(parameterName, message);
 
 		return value;
 	}
@@ -40,20 +34,15 @@ public static class Check
 		int maxLength = int.MaxValue,
 		int minLength = 0)
 	{
-		if (value == null)
-		{
-			throw new ArgumentException($"{parameterName} can not be null!", parameterName);
-		}
+		if (value == null) throw new ArgumentException($"{parameterName} can not be null!", parameterName);
 
 		if (value.Length > maxLength)
-		{
-			throw new ArgumentException($"{parameterName} length must be equal to or lower than {maxLength}!", parameterName);
-		}
+			throw new ArgumentException($"{parameterName} length must be equal to or lower than {maxLength}!",
+				parameterName);
 
 		if (minLength > 0 && value.Length < minLength)
-		{
-			throw new ArgumentException($"{parameterName} length must be equal to or bigger than {minLength}!", parameterName);
-		}
+			throw new ArgumentException($"{parameterName} length must be equal to or bigger than {minLength}!",
+				parameterName);
 
 		return value;
 	}
@@ -66,19 +55,15 @@ public static class Check
 		int minLength = 0)
 	{
 		if (value.IsNullOrWhiteSpace())
-		{
 			throw new ArgumentException($"{parameterName} can not be null, empty or white space!", parameterName);
-		}
 
 		if (value!.Length > maxLength)
-		{
-			throw new ArgumentException($"{parameterName} length must be equal to or lower than {maxLength}!", parameterName);
-		}
+			throw new ArgumentException($"{parameterName} length must be equal to or lower than {maxLength}!",
+				parameterName);
 
 		if (minLength > 0 && value!.Length < minLength)
-		{
-			throw new ArgumentException($"{parameterName} length must be equal to or bigger than {minLength}!", parameterName);
-		}
+			throw new ArgumentException($"{parameterName} length must be equal to or bigger than {minLength}!",
+				parameterName);
 
 		return value;
 	}
@@ -91,19 +76,15 @@ public static class Check
 		int minLength = 0)
 	{
 		if (value.IsNullOrEmpty())
-		{
 			throw new ArgumentException($"{parameterName} can not be null or empty!", parameterName);
-		}
 
 		if (value!.Length > maxLength)
-		{
-			throw new ArgumentException($"{parameterName} length must be equal to or lower than {maxLength}!", parameterName);
-		}
+			throw new ArgumentException($"{parameterName} length must be equal to or lower than {maxLength}!",
+				parameterName);
 
 		if (minLength > 0 && value!.Length < minLength)
-		{
-			throw new ArgumentException($"{parameterName} length must be equal to or bigger than {minLength}!", parameterName);
-		}
+			throw new ArgumentException($"{parameterName} length must be equal to or bigger than {minLength}!",
+				parameterName);
 
 		return value;
 	}
@@ -112,9 +93,7 @@ public static class Check
 	public static ICollection<T> NotNullOrEmpty<T>(ICollection<T>? value, [InvokerParameterName] string parameterName)
 	{
 		if (value == null || value.Count <= 0)
-		{
 			throw new ArgumentException(parameterName + " can not be null or empty!", parameterName);
-		}
 
 		return value;
 	}
@@ -127,9 +106,8 @@ public static class Check
 		NotNull(type, parameterName);
 
 		if (!type.IsAssignableTo<TBaseType>())
-		{
-			throw new ArgumentException($"{parameterName} (type of {type.AssemblyQualifiedName}) should be assignable to the {typeof(TBaseType).GetFullNameWithAssemblyName()}!");
-		}
+			throw new ArgumentException(
+				$"{parameterName} (type of {type.AssemblyQualifiedName}) should be assignable to the {typeof(TBaseType).GetFullNameWithAssemblyName()}!");
 
 		return type;
 	}
@@ -143,66 +121,47 @@ public static class Check
 		if (minLength > 0)
 		{
 			if (string.IsNullOrEmpty(value))
-			{
 				throw new ArgumentException(parameterName + " can not be null or empty!", parameterName);
-			}
 
 			if (value!.Length < minLength)
-			{
-				throw new ArgumentException($"{parameterName} length must be equal to or bigger than {minLength}!", parameterName);
-			}
+				throw new ArgumentException($"{parameterName} length must be equal to or bigger than {minLength}!",
+					parameterName);
 		}
 
 		if (value != null && value.Length > maxLength)
-		{
-			throw new ArgumentException($"{parameterName} length must be equal to or lower than {maxLength}!", parameterName);
-		}
+			throw new ArgumentException($"{parameterName} length must be equal to or lower than {maxLength}!",
+				parameterName);
 
 		return value;
 	}
 
-	public static Int16 Positive(
-		Int16 value,
+	public static short Positive(
+		short value,
 		[InvokerParameterName] string parameterName)
 	{
 		if (value == 0)
-		{
 			throw new ArgumentException($"{parameterName} is equal to zero");
-		}
-		else if (value < 0)
-		{
-			throw new ArgumentException($"{parameterName} is less than zero");
-		}
+		if (value < 0) throw new ArgumentException($"{parameterName} is less than zero");
 		return value;
 	}
 
-	public static Int32 Positive(
-		Int32 value,
+	public static int Positive(
+		int value,
 		[InvokerParameterName] string parameterName)
 	{
 		if (value == 0)
-		{
 			throw new ArgumentException($"{parameterName} is equal to zero");
-		}
-		else if (value < 0)
-		{
-			throw new ArgumentException($"{parameterName} is less than zero");
-		}
+		if (value < 0) throw new ArgumentException($"{parameterName} is less than zero");
 		return value;
 	}
 
-	public static Int64 Positive(
-		Int64 value,
+	public static long Positive(
+		long value,
 		[InvokerParameterName] string parameterName)
 	{
 		if (value == 0)
-		{
 			throw new ArgumentException($"{parameterName} is equal to zero");
-		}
-		else if (value < 0)
-		{
-			throw new ArgumentException($"{parameterName} is less than zero");
-		}
+		if (value < 0) throw new ArgumentException($"{parameterName} is less than zero");
 		return value;
 	}
 
@@ -211,13 +170,8 @@ public static class Check
 		[InvokerParameterName] string parameterName)
 	{
 		if (value == 0)
-		{
 			throw new ArgumentException($"{parameterName} is equal to zero");
-		}
-		else if (value < 0)
-		{
-			throw new ArgumentException($"{parameterName} is less than zero");
-		}
+		if (value < 0) throw new ArgumentException($"{parameterName} is less than zero");
 		return value;
 	}
 
@@ -226,13 +180,8 @@ public static class Check
 		[InvokerParameterName] string parameterName)
 	{
 		if (value == 0)
-		{
 			throw new ArgumentException($"{parameterName} is equal to zero");
-		}
-		else if (value < 0)
-		{
-			throw new ArgumentException($"{parameterName} is less than zero");
-		}
+		if (value < 0) throw new ArgumentException($"{parameterName} is less than zero");
 		return value;
 	}
 
@@ -241,53 +190,43 @@ public static class Check
 		[InvokerParameterName] string parameterName)
 	{
 		if (value == 0)
-		{
 			throw new ArgumentException($"{parameterName} is equal to zero");
-		}
-		else if (value < 0)
-		{
-			throw new ArgumentException($"{parameterName} is less than zero");
-		}
+		if (value < 0) throw new ArgumentException($"{parameterName} is less than zero");
 		return value;
 	}
 
-	public static Int16 Range(
-		Int16 value,
+	public static short Range(
+		short value,
 		[InvokerParameterName] string parameterName,
-		Int16 minimumValue,
-		Int16 maximumValue = Int16.MaxValue)
+		short minimumValue,
+		short maximumValue = short.MaxValue)
 	{
 		if (value < minimumValue || value > maximumValue)
-		{
 			throw new ArgumentException($"{parameterName} is out of range min: {minimumValue} - max: {maximumValue}");
-		}
-
-		return value;
-	}
-	public static Int32 Range(
-		Int32 value,
-		[InvokerParameterName] string parameterName,
-		Int32 minimumValue,
-		Int32 maximumValue = Int32.MaxValue)
-	{
-		if (value < minimumValue || value > maximumValue)
-		{
-			throw new ArgumentException($"{parameterName} is out of range min: {minimumValue} - max: {maximumValue}");
-		}
 
 		return value;
 	}
 
-	public static Int64 Range(
-		Int64 value,
+	public static int Range(
+		int value,
 		[InvokerParameterName] string parameterName,
-		Int64 minimumValue,
-		Int64 maximumValue = Int64.MaxValue)
+		int minimumValue,
+		int maximumValue = int.MaxValue)
 	{
 		if (value < minimumValue || value > maximumValue)
-		{
 			throw new ArgumentException($"{parameterName} is out of range min: {minimumValue} - max: {maximumValue}");
-		}
+
+		return value;
+	}
+
+	public static long Range(
+		long value,
+		[InvokerParameterName] string parameterName,
+		long minimumValue,
+		long maximumValue = long.MaxValue)
+	{
+		if (value < minimumValue || value > maximumValue)
+			throw new ArgumentException($"{parameterName} is out of range min: {minimumValue} - max: {maximumValue}");
 
 		return value;
 	}
@@ -300,9 +239,7 @@ public static class Check
 		float maximumValue = float.MaxValue)
 	{
 		if (value < minimumValue || value > maximumValue)
-		{
 			throw new ArgumentException($"{parameterName} is out of range min: {minimumValue} - max: {maximumValue}");
-		}
 		return value;
 	}
 
@@ -314,9 +251,7 @@ public static class Check
 		double maximumValue = double.MaxValue)
 	{
 		if (value < minimumValue || value > maximumValue)
-		{
 			throw new ArgumentException($"{parameterName} is out of range min: {minimumValue} - max: {maximumValue}");
-		}
 
 		return value;
 	}
@@ -329,9 +264,7 @@ public static class Check
 		decimal maximumValue = decimal.MaxValue)
 	{
 		if (value < minimumValue || value > maximumValue)
-		{
 			throw new ArgumentException($"{parameterName} is out of range min: {minimumValue} - max: {maximumValue}");
-		}
 
 		return value;
 	}
@@ -341,15 +274,10 @@ public static class Check
 		[InvokerParameterName] string parameterName)
 		where T : struct
 	{
-		if (value == null)
-		{
-			throw new ArgumentException($"{parameterName} is null!", parameterName);
-		}
+		if (value == null) throw new ArgumentException($"{parameterName} is null!", parameterName);
 
 		if (value.Value.Equals(default(T)))
-		{
 			throw new ArgumentException($"{parameterName} has a default value!", parameterName);
-		}
 
 		return value.Value;
 	}

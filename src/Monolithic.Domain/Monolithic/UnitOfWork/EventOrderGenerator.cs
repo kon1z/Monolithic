@@ -2,10 +2,10 @@ namespace Monolithic.UnitOfWork;
 
 public static class EventOrderGenerator
 {
-    private static long _lastOrder;
+	private static long _lastOrder;
 
-    public static long GetNext()
-    {
-        return Interlocked.Increment(ref _lastOrder);
-    }
+	public static long GetNext()
+	{
+		return Interlocked.Increment(ref _lastOrder);
+	}
 }

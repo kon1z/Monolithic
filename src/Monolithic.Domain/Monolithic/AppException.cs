@@ -3,30 +3,26 @@
 namespace Monolithic;
 
 /// <summary>
-/// Base exception type for those are thrown by  system for  specific exceptions.
+///     Base exception type for those are thrown by  system for  specific exceptions.
 /// </summary>
 public class AppException : Exception
 {
-    public AppException()
-    {
+	public AppException()
+	{
+	}
 
-    }
+	public AppException(string? message)
+		: base(message)
+	{
+	}
 
-    public AppException(string? message)
-        : base(message)
-    {
+	public AppException(string? message, Exception? innerException)
+		: base(message, innerException)
+	{
+	}
 
-    }
-
-    public AppException(string? message, Exception? innerException)
-        : base(message, innerException)
-    {
-
-    }
-
-    public AppException(SerializationInfo serializationInfo, StreamingContext context)
-        : base(serializationInfo, context)
-    {
-
-    }
+	public AppException(SerializationInfo serializationInfo, StreamingContext context)
+		: base(serializationInfo, context)
+	{
+	}
 }

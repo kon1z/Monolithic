@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace></RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Autofac\**" />
+    <Compile Remove="EventBus\**" />
+    <Compile Remove="UnitOfWork\**" />
+    <EmbeddedResource Remove="Autofac\**" />
+    <EmbeddedResource Remove="EventBus\**" />
+    <EmbeddedResource Remove="UnitOfWork\**" />
+    <None Remove="Autofac\**" />
+    <None Remove="EventBus\**" />
+    <None Remove="UnitOfWork\**" />
+  </ItemGroup>
+
+	<ItemGroup>
+    <ProjectReference Include="..\Monolithic.Application\Monolithic.Application.csproj" />
+    <ProjectReference Include="..\Monolithic.Domain\Monolithic.Domain.csproj" />
+  </ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Microsoft\" />
+	  <Folder Include="Monolithic\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.0" />
+	</ItemGroup>
+
+</Project>

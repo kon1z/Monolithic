@@ -1,20 +1,16 @@
 ﻿namespace Monolithic.Domain.Entities;
 
-/// <inheritdoc/>
+/// <inheritdoc />
 [Serializable]
 public abstract class Entity : IEntity
 {
-	protected Entity()
-	{
-	}
+	public abstract object?[] GetKeys();
 
-	/// <inheritdoc/>
+	/// <inheritdoc />
 	public override string ToString()
 	{
 		return $"[ENTITY: {GetType().Name}] Keys = {GetKeys().JoinAsString(", ")}";
 	}
-
-	public abstract object?[] GetKeys();
 
 	public bool EntityEquals(IEntity other)
 	{
@@ -27,11 +23,8 @@ public abstract class Entity : IEntity
 public abstract class Entity<TKey> : Entity, IEntity<TKey>
 	where TKey : IEquatable<TKey>
 {
-	public virtual TKey Id { get; protected set; } = default!;
-
 	protected Entity()
 	{
-
 	}
 
 	protected Entity(TKey id)
@@ -39,12 +32,14 @@ public abstract class Entity<TKey> : Entity, IEntity<TKey>
 		Id = id;
 	}
 
+	public virtual TKey Id { get; protected set; } = default!;
+
 	public override object?[] GetKeys()
 	{
 		return new object?[] { Id };
 	}
 
-	/// <inheritdoc/>
+	/// <inheritdoc />
 	public override string ToString()
 	{
 		return $"[ENTITY: {GetType().Name}] Id = {Id}";

@@ -1,14 +1,8 @@
 namespace Monolithic.Domain.Entities;
 
-public class DomainEventRecord
+public class DomainEventRecord(object eventData, long eventOrder)
 {
-    public object EventData { get; }
+	public object EventData { get; } = eventData;
 
-    public long EventOrder { get; }
-
-    public DomainEventRecord(object eventData, long eventOrder)
-    {
-        EventData = eventData;
-        EventOrder = eventOrder;
-    }
+	public long EventOrder { get; } = eventOrder;
 }

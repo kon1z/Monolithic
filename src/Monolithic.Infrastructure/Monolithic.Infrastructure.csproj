@@ -1,26 +1,31 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    <RootNamespace></RootNamespace>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<RootNamespace></RootNamespace>
+	</PropertyGroup>
 
 	<ItemGroup>
-    <ProjectReference Include="..\Monolithic.Application\Monolithic.Application.csproj" />
-    <ProjectReference Include="..\Monolithic.Domain\Monolithic.Domain.csproj" />
-  </ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="EntityFrameworkCore\Repositories\" />
-	  <Folder Include="UnitOfWork\" />
-	  <Folder Include="EventBus\" />
-	  <Folder Include="Autofac\" />
+		<Compile Remove="Autofac\**" />
+		<Compile Remove="EventBus\**" />
+		<Compile Remove="UnitOfWork\**" />
+		<EmbeddedResource Remove="Autofac\**" />
+		<EmbeddedResource Remove="EventBus\**" />
+		<EmbeddedResource Remove="UnitOfWork\**" />
+		<None Remove="Autofac\**" />
+		<None Remove="EventBus\**" />
+		<None Remove="UnitOfWork\**" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.0" />
+		<ProjectReference Include="..\Monolithic.Application\Monolithic.Application.csproj" />
+		<ProjectReference Include="..\Monolithic.Domain\Monolithic.Domain.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.0" />
 	</ItemGroup>
 
 </Project>
