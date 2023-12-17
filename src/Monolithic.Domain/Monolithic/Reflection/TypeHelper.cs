@@ -155,7 +155,7 @@ public static class TypeHelper
 		return null;
 	}
 
-	public static string GetFullNameHandlingNullableAndGenerics([NotNull] Type type)
+	public static string GetFullNameHandlingNullableAndGenerics(Type type)
 	{
 		Check.NotNull(type, nameof(type));
 
@@ -173,7 +173,7 @@ public static class TypeHelper
 		return type.FullName ?? type.Name;
 	}
 
-	public static string GetSimplifiedName([NotNull] Type type)
+	public static string GetSimplifiedName(Type type)
 	{
 		Check.NotNull(type, nameof(type));
 

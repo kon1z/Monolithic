@@ -2,4 +2,5 @@
 
 public interface IUnitOfWorkManager
 {
+	IUnitOfWork? CurrentUow { get; }
 }

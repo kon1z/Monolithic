@@ -61,13 +61,13 @@ public static class EntityHelper
 		return true;
 	}
 
-	public static bool IsEntity([NotNull] Type type)
+	public static bool IsEntity(Type type)
 	{
 		Check.NotNull(type, nameof(type));
 		return typeof(IEntity).IsAssignableFrom(type);
 	}
 
-	public static bool IsValueObject([NotNull] Type type)
+	public static bool IsValueObject(Type type)
 	{
 		Check.NotNull(type, nameof(type));
 		return IsValueObjectPredicate(type);
@@ -78,7 +78,7 @@ public static class EntityHelper
 		return obj != null && IsValueObject(obj.GetType());
 	}
 
-	public static void CheckEntity([NotNull] Type type)
+	public static void CheckEntity(Type type)
 	{
 		Check.NotNull(type, nameof(type));
 		if (!IsEntity(type))
@@ -86,7 +86,7 @@ public static class EntityHelper
 				$"Given {nameof(type)} is not an entity: {type.AssemblyQualifiedName}. It must implement {typeof(IEntity).AssemblyQualifiedName}.");
 	}
 
-	public static bool IsEntityWithId([NotNull] Type type)
+	public static bool IsEntityWithId(Type type)
 	{
 		foreach (var interfaceType in type.GetInterfaces())
 			if (interfaceType.GetTypeInfo().IsGenericType &&
@@ -123,7 +123,7 @@ public static class EntityHelper
 		return TypeHelper.IsDefaultValue(value);
 	}
 
-	public static bool HasDefaultKeys([NotNull] IEntity entity)
+	public static bool HasDefaultKeys(IEntity entity)
 	{
 		Check.NotNull(entity, nameof(entity));
 
@@ -148,7 +148,7 @@ public static class EntityHelper
 	///     Tries to find the primary key type of the given entity type.
 	///     May return null if given type does not implement <see cref="IEntity{TKey}" />
 	/// </summary>
-	public static Type? FindPrimaryKeyType([NotNull] Type entityType)
+	public static Type? FindPrimaryKeyType(Type entityType)
 	{
 		if (!typeof(IEntity).IsAssignableFrom(entityType))
 			throw new AppException(
