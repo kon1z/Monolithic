@@ -6,19 +6,16 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <InvariantGlobalization>true</InvariantGlobalization>
     <RootNamespace></RootNamespace>
+    <UserSecretsId>ddb2c7d6-5bcc-4e47-be6b-a38a58b51f3a</UserSecretsId>
   </PropertyGroup>
 
 	<ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Monolithic.Application\Monolithic.Application.csproj" />
     <ProjectReference Include="..\Monolithic.Infrastructure\Monolithic.Infrastructure.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>

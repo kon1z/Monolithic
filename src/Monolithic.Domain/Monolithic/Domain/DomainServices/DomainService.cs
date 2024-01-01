@@ -1,4 +1,4 @@
-﻿using Monolithic.DependencyInjection;
+﻿using Monolithic.DependencyInjection.Attributes;
 
 namespace Monolithic.Domain.DomainServices;
 
